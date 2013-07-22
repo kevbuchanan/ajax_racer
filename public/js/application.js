@@ -1,7 +1,30 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+function finished(){
+  return $('tr td:nth-child(38)').hasClass('active');
+};
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+function update_player_position(player) {
+  var row = $("#"+ player + "_track");
+  var newposition = row.find('.active').next();
+  row.find('td').removeClass('active');
+  newposition.addClass('active');
+  };
+
+
+$(document).ready(function() {
+  $(this).keyup(function(key){
+    if (key.keyCode == 65) {
+      update_player_position('player1');
+    }
+    else if (key.keyCode == 76) {
+      update_player_position('player2');
+    }
+    else if (key.keyCode == 67) {
+      update_player_position('player3');
+    }
+    if (finished()) {
+      var winner = $('tr td:nth-child(38).active').parent().data('name');
+      alert(winner + ' won!');
+    }
+  });
 });

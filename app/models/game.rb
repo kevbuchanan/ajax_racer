@@ -4,6 +4,6 @@ class Game < ActiveRecord::Base
   has_many :players, through: :players_games
 
   def time
-    self.updated_at - self.created_at
+    (self.updated_at - self.created_at).round(2)
   end
 end

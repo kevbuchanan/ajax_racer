@@ -1,5 +1,6 @@
 get '/' do
-  # Look in app/views/index.erb
+  @best_times = Game.all.to_a.sort_by(&:time)[0..9]
+  p @best_times
   erb :index
 end
 
@@ -17,7 +18,8 @@ end
 
 post '/finished' do
   @game = Game.last
-  @winner = Player.find(params[:winner])
+  @winner = Player.find_by_name(params[:winner])
   @game.winner_id = @winner.id
-  erb :_finished, layout: false, locals: { game: @game, winner: @winner}
+  @game.save
+  erb :_winner, layout: false, locals: { game: @game, winner: @winner}
 end

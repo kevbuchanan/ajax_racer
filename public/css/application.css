@@ -1,8 +1,10 @@
 .container {
-  margin: 0 auto;
+  margin: 20px auto;
   width: 1200px;
-  border: 0px;
+  border-radius: 5px;
   text-align: center;
+  background-color: #95a5a6;
+  padding: 20px;
 }
 
 .game {
@@ -11,18 +13,43 @@
 
 .race_table td {
   background-color: white;
-  height: 30px;
+  font-size: 1.3em;
+  height: 50px;
   width: 30px;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  -webkit-transition: background-image 0.2s ease-in-out;
+  -moz-transition: background-image 0.2s ease-in-out;
+  -ms-transition: background-image 0.2s ease-in-out;
+  -o-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
+}
+
+.race_table tr:last-child td {
+  border-top: 3px dashed orange;
+}
+
+tr td:first-child {
+  border-left: 1px solid black;
 }
 
 tr td:last-child {
   border-left: 5px solid black;
+  border-right: 1px solid black;
   background-color: red;
 }
 
 .race_table td.active {
   background-color: black;
+  background-position: center bottom;
+}
+
+.race_table td.finish {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Checkerboard_pattern.svg/220px-Checkerboard_pattern.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  background-size: 60px 60px;
 }
 
 #player1_track td.active {
@@ -39,7 +66,7 @@ tr td:last-child {
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
-  background-size: 30px 30px;
+  background-size: 40px 50px;
 }
 
 #player3_track td.active {
@@ -47,14 +74,16 @@ tr td:last-child {
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
-  background-size: 30px 30px;
+  background-size: 40px 50px;
 }
 
 #player-setup {
   width: 500px;
   margin: 0 auto;
   padding: 10px;
-  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #16a085;
+  box-shadow: 2px 2px 5px 2px;
 }
 
 #player-setup input {
@@ -62,6 +91,69 @@ tr td:last-child {
   margin: 20px auto;
   margin-bottom: 20px;
   width: 400px;
+  padding: 5px;
 }
 
+.all-time {
+  float: right;
+  padding: 10px;
+  background-color: #e67e22;
+  box-shadow: 2px 2px 5px 2px;
+  border-radius: 5px;
+  text-align: left;
+}
 
+.ready {
+  margin: 10px auto;
+  background-color: #2ecc71;
+  border-radius: 5px;
+  padding: 5px;
+  width: 300px;
+}
+
+#winner {
+  text-align: center;
+  margin: 10px auto;
+  width: 300px;
+}
+
+#start {
+  background-color: #34495e;
+  margin: 0 auto;
+  padding: 3px;
+  height: 200px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+#start div {
+  -webkit-transition: background-image 0.5s ease-in-out;
+  -moz-transition: background-image 0.5s ease-in-out;
+  -ms-transition: background-image 0.5s ease-in-out;
+  -o-transition: background-image 0.5s ease-in-out;
+  transition: background-image 0.5s ease-in-out;
+  opacity: 0.3;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#start #red {
+  background-color: red;
+  opacity: 1;
+}
+
+#start #yellow {
+  background-color: yellow;
+}
+
+#start #green {
+  background-color: #00FF00;
+}
+
+.start-btn {
+  box-shadow: 0;
+  margin: 0 auto;
+}

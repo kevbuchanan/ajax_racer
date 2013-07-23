@@ -1,4 +1,13 @@
 <div id='winner'>
-  <p><%=@winner.name%> won!!</p>
-  <p>Time: <%=@game.time%></p>
+  <h2><%=@winner.name%> won!!</h2>
+  <p>Time: <%=@game.time%> seconds</p>
+  <h4><%=@winner.name%>'s Best Times</h4>
+  <ol>
+    <% @winner.wins.to_a.sort_by(&:time)[0..4].each do |win| %>
+    <li><%=win.time%> seconds, <%= win.updated_at.strftime('%m/%d/%Y')%></li>
+    <% end %>
+  </ol>
+  <form action='/' method='get'>
+    <input type='submit' value='New Game'>
+  </form>
 </div>

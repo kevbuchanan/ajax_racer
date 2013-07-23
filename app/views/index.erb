@@ -1,12 +1,24 @@
 <h1>JS Racer!!!!!!!!!!</h1>
 <h4>Player 1, press 'A' to race</h4>
 <h4>Player 2, press 'L' to race</h4>
+<div class='all-time'>
+  <h3>All-Time Best Times</h3>
+  <ol>
+    <% @best_times.each do |game| %>
+      <li><%=Player.find(game.winner_id).name%>: <%=game.time%> seconds</li>
+    <% end %>
+  </ol>
+</div>
 <div id="player-setup">
   <%= erb :_form, layout: false %>
 </div>
 <div id='start'>
-  <form action='/new_game' method='post'>
+  <form class='start-btn' action='/new_game' method='post'>
     <input class='btn' type='submit' value='Start!'>
   </form>
+  <div id='red'></div>
+  <div id='yellow'></div>
+  <div id='green'></div>
 </div>
 <%= erb :_game, layout: false %>
+

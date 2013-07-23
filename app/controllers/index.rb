@@ -4,7 +4,9 @@ get '/' do
 end
 
 post '/new_game' do
-
+  @player1 = Player.find_by_name(params[:player1])
+  @player2 = Player.find_by_name(params[:player2])
+  @game = Game.create(players: [@player1, @player2])
 end
 
 post '/new_player' do

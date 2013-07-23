@@ -14,5 +14,8 @@ post '/new_player' do
 end
 
 post '/finished' do
-
+  @game = Game.last
+  @winner = Player.find(params[:winner])
+  @game.winner_id = @winner.id
+  erb :_finished, layout: false, locals: { game: @game, winner: @winner}
 end

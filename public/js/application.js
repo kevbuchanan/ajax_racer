@@ -18,18 +18,23 @@ function play(){
     else if (key.keyCode == 76) {
       update_player_position('player2');
     }
+    else if (key.keyCode == 67) {
+      update_player_position('player3');
+    }
   });
+  if (finished()) {
   var winner = $('tr td:last-child.active').parent().data('name');
   $.post('/finished', {winner: winner}, function(response){
-    alert('winner');
+    $('.container').append(response);
   });
+}
 };
 
 
 $(document).ready(function() {
   $('#start').hide();
   var players = 0
-  $('#player-setup').on('submit', 'form', function(event){
+  $('#player-setup').on('submit', 'form.new-player', function(event){
     event.preventDefault();
     event.stopPropagation();
     var button = $(this).find('.btn')

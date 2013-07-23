@@ -1,5 +1,6 @@
 .container {
   margin: 0 auto;
+  margin-top: 15%;
   width: 1200px;
   border: 0px;
 }
@@ -49,3 +50,19 @@ h1 {
   background-color: white;
   background-size: 30px 30px;
 }
+
+#player-setup {
+  width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#player-setup input {
+  display: block;
+  margin: 20px auto;
+  margin-bottom: 20px;
+  width: 400px;
+}
+

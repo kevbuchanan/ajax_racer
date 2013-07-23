@@ -9,6 +9,7 @@
 
 .game {
   margin-top: 20px;
+  clear: both;
 }
 
 .race_table td {
@@ -101,6 +102,17 @@ tr td:last-child {
   box-shadow: 2px 2px 5px 2px;
   border-radius: 5px;
   text-align: left;
+  width: 300px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.all-time h3 {
+  margin-top: 5px;
+}
+
+.all-time ol {
+  text-align: left;
 }
 
 .ready {
@@ -112,21 +124,26 @@ tr td:last-child {
 }
 
 #winner {
-  text-align: center;
   margin: 10px auto;
   width: 300px;
+  text-align: center;
 }
 
-#start {
+#winner ol {
+  text-align: left;
+}
+
+
+#light {
   background-color: #34495e;
   margin: 0 auto;
   padding: 3px;
-  height: 200px;
+  height: 160px;
   width: 50px;
   border-radius: 5px;
 }
 
-#start div {
+#light div {
   -webkit-transition: background-image 0.5s ease-in-out;
   -moz-transition: background-image 0.5s ease-in-out;
   -ms-transition: background-image 0.5s ease-in-out;
@@ -140,20 +157,36 @@ tr td:last-child {
   margin-top: 10px;
 }
 
-#start #red {
+#light #red {
   background-color: red;
   opacity: 1;
 }
 
-#start #yellow {
+#light #yellow {
   background-color: yellow;
 }
 
-#start #green {
+#light #green {
   background-color: #00FF00;
 }
 
 .start-btn {
-  box-shadow: 0;
-  margin: 0 auto;
+  background-image: url('http://harendersingh9.files.wordpress.com/2013/04/arcade-button.jpg');
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  margin: 5px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 210%;
+  cursor: pointer;
+}
+
+.start-btn:active {
+  position: relative;
+  top: 2px;
+}
+
+.start-btn input {
+  display: none;
 }

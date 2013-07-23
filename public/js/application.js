@@ -65,11 +65,13 @@ $(document).ready(function() {
         $('#player-setup').replaceWith($('#start'));
         $('#start').show();
         
-        $('#start').on('submit', function(event){
+        $('#start').on('click', function(event){
           event.preventDefault();
           lights();
-          $.post('/new_game', {player1: player1, player2: player2});
-          monitorKeys();
+          window.setTimeout(function(){
+            $.post('/new_game', {player1: player1, player2: player2});
+            monitorKeys();
+          }, 2300);
         });
       };
     });

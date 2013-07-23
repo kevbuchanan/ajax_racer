@@ -16,9 +16,11 @@
   <form class='start-btn' action='/new_game' method='post'>
     <input class='btn' type='submit' value='Start!'>
   </form>
-  <div id='red'></div>
-  <div id='yellow'></div>
-  <div id='green'></div>
+  <div id='light'>
+    <div id='red'></div>
+    <div id='yellow'></div>
+    <div id='green'></div>
+  </div>
 </div>
 <%= erb :_game, layout: false %>
 

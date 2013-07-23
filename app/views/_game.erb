@@ -1,8 +1,6 @@
 <div class='game'>
-  <h1>Kevin and Rachel's Ruby-JavaScript Hybrid Racer</h1>
   <table class="race_table">
     <tr id="player1_track" data-name="<%=@player1.name if @player1%>">
-      <span><%= @player1.name if @player1 %></span>
       <td class="active"></td>
       <td></td>
       <td></td>
@@ -43,7 +41,6 @@
       <td></td>
     </tr>
       <tr id="player2_track" data-name="<%=@player2.name if @player2%>">
-      <span><%= @player2.name if @player2 %></span>
       <td class="active"></td>
       <td></td>
       <td></td>

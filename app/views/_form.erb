@@ -1,19 +1,13 @@
-<form class='new-players' action="/new_game" method="post">
-  <% if @game_error %>
-    <p><%=@game_error %></p>
-  <% end %>
-  <input type="text" name="player1[name]" placeholder="Player 1 Name">
-  <% if @errors1 %>
-  <% @errors1.each do |error| %>
-    <p>Player 1: <%=error%></p>
-  <% end %>
-  <% end %>
-  <input type="text" name="player2[name]" placeholder="Player 2 Name">
-  <% if @errors2 %>
-    <% @errors2.each do |error| %>
-      <p>Player 2: <%=error%></p>
-    <% end %>
-  <% end %>
-  <input type="submit" value="Start game!">
+<form class='new-player' action="/new_player" method="post">
+  <input type='text' name='player' placeholder='Player 1, Enter Your Name'>
+  <input class='btn' type='submit' value='Ready'>
 </form>
+<form class='new-player' action="/new_player" method="post">
+  <input type='text' name='player' placeholder='Player 2, Enter Your Name'>
+  <input class='btn' type='submit' value='Ready'>
+</form>
+<form id='start' action='/new_game' method='post'>
+  <input class='btn' type='submit' value='Start!'>
+</form>
+
 

@@ -1,4 +1,12 @@
+<h1>JS Racer!!!!!!!!!!</h1>
+<h4>Player 1, press 'A' to race</h4>
+<h4>Player 2, press 'L' to race</h4>
 <div id="player-setup">
-<%= erb :_form, layout: false %>
+  <%= erb :_form, layout: false %>
+</div>
+<div id='start'>
+  <form action='/new_game' method='post'>
+    <input class='btn' type='submit' value='Start!'>
+  </form>
 </div>
 <%= erb :_game, layout: false %>

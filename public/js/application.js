@@ -32,8 +32,10 @@ function play(){
 
 
 $(document).ready(function() {
-  $('#start').find('form').hide();
+  $('#start').hide();
+
   var players = 0
+
   $('#player-setup .new-player').on('submit', function(event){
     event.preventDefault();
     event.stopPropagation();
@@ -45,11 +47,7 @@ $(document).ready(function() {
       button.replaceWith("<p class='ready'>"+ name +" is ready to race!</p>");
       players ++;
       if (players == 2) {
-        $('#start').find('form').show();
-        $('#start').on('submit', 'form', function(event){
-          event.preventDefault;
-          play();
-        });
+        $('#start').show();
       };
     });
   });

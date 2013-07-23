@@ -1,8 +1,8 @@
 .container {
   margin: 0 auto;
-  margin-top: 100px;
   width: 1200px;
   border: 0px;
+  text-align: center;
 }
 
 .game {
@@ -33,11 +33,6 @@ tr td:last-child {
   background-size: 30px 30px;
 }
 
-h1 {
-  border: 0;
-  background: orange;
-  text-align: center;
-}
 
 #player2_track td.active {
   background-image: url('http://3.bp.blogspot.com/_bVpyfkVa-OU/THbNJ52H8ZI/AAAAAAAAAD0/GyYUE8nk8oE/s400/luigi+on+dirt+bike.jpg');
@@ -59,7 +54,6 @@ h1 {
   width: 500px;
   margin: 0 auto;
   padding: 10px;
-  height: 250px;
   border: 1px solid black;
 }
 

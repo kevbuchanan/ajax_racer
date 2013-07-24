@@ -7,3 +7,4 @@ class Game < ActiveRecord::Base
     (self.updated_at - self.created_at).round(2)
   end
 end
+

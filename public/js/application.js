@@ -1,3 +1,23 @@
+function Player(name){
+  this.name = name,
+  this.currentPosition = 1,
+  this.move = function(){
+    currentPosition ++;
+  }),
+  this.finished: currentPosition == 38
+}
+
+function Game(player1, player2){
+  this.player1 = player1,
+  this.player2 = player2,
+  this.status = 'in progress',
+  this.startTime = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+  this.endTime = null,
+  this.winner = null
+  this.finished = this.player1.finished || this.player2.finished
+}
+
+
 function end_game(){
   $(document).off('keyup', monitorKeys());
   var winner = $('.active.finish').closest('tr').data('name');
@@ -29,10 +49,6 @@ var monitorKeys = function(){
     }
     else if (key.keyCode == 76) {
       update_player_position('player2');
-      if ($('tr td:last-child').hasClass('active')) { end_game() };
-    }
-    else if (key.keyCode == 67) {
-      update_player_position('player3');
       if ($('tr td:last-child').hasClass('active')) { end_game() };
     }
   });

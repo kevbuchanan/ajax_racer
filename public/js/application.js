@@ -3,28 +3,27 @@ function Player(name){
   this.currentPosition = 1,
   this.move = function(){
     currentPosition ++;
-  }),
-  this.finished: currentPosition == 38
+  },
+  this.finished = currentPosition == 38
 }
 
 function Game(player1, player2){
   this.player1 = player1,
   this.player2 = player2,
   this.status = 'in progress',
-  this.startTime = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+  this.startTime = new Date(year, month, day, hours, minutes, seconds, milliseconds),
   this.endTime = null,
-  this.winner = null
-  this.finished = this.player1.finished || this.player2.finished
+  this.winner = null,
+  this.finished = this.player1.finished || this.player2.finished,
+  this.end = function(winner){
+    $(document).off('keyup', monitorKeys());
+    this.winner = winner;
+    this.endTime = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+    $.post('/finished', {winner: winner}, function(response){
+      $('.container').append(response);
+    });
+  }
 }
-
-
-function end_game(){
-  $(document).off('keyup', monitorKeys());
-  var winner = $('.active.finish').closest('tr').data('name');
-  $.post('/finished', {winner: winner}, function(response){
-    $('.container').append(response);
-  });
-};
 
 
 function update_player_position(player) {
@@ -41,15 +40,17 @@ function lights(){
   $('#green').delay(2000).fadeTo(1000, 1.0);
 };
 
-var monitorKeys = function(){
+var monitorKeys = function(game){
   $(document).keyup(function(key){
     if (key.keyCode == 65) {
       update_player_position('player1');
-      if ($('tr td:last-child').hasClass('active')) { end_game() };
+      game.player1.move;
+      if game.player1.finished { game.end(player1) };
     }
     else if (key.keyCode == 76) {
       update_player_position('player2');
-      if ($('tr td:last-child').hasClass('active')) { end_game() };
+      game.player2.move;
+      if game.player2.finished { game.end(player2) };
     }
   });
 };
@@ -58,38 +59,32 @@ var monitorKeys = function(){
 $(document).ready(function() {
   $('#start').hide();
 
-  var players = 0
+  var players = []
+
 
   $('.new-player').on('submit', function(event){
     event.preventDefault();
     event.stopPropagation();
     var button = $(this).find('.btn')
-    var url = $(this).attr('action');
     var data = $(this).serialize();
     
-    $.post(url, data, function(response){
-      var name = response.player.name;
-      button.parent().data('name', name);
-      button.replaceWith("<p class='ready'>"+ name +" is ready to race!</p>");
-      players ++;
+    var player = new Player(data.name);
+    players.push(player);
+    button.replaceWith("<p class='ready'>"+ player.name +" is ready to race!</p>");
+    players ++;
+
+    if (players.length == 2) {
+      $('#player-setup').replaceWith($('#start'));
+      $('#start').show();
       
-      if (players == 2) {
-        var player1 = $('.player1').data('name');
-        var player2 = $('.player2').data('name');
-        $('table').find('tr:first-child').data('name', player1);
-        $('table').find('tr:last-child').data('name', player2);
-        $('#player-setup').replaceWith($('#start'));
-        $('#start').show();
-        
-        $('#start').on('click', function(event){
-          event.preventDefault();
-          lights();
-          window.setTimeout(function(){
-            $.post('/new_game', {player1: player1, player2: player2});
-            monitorKeys();
-          }, 2300);
-        });
-      };
-    });
+      $('#start').on('click', function(event){
+        event.preventDefault();
+        lights();
+        window.setTimeout(function(){
+          var game = Game.new(players[0], players[1])
+          monitorKeys(game);
+        }, 2300);
+      });
+    };
   });
 });

@@ -1,19 +1,34 @@
 <h1>JS Racer!!!!!!!!!!</h1>
-<h4>Player 1, press 'A' to race</h4>
-<h4>Player 2, press 'L' to race</h4>
 <div class='all-time'>
-  <h3>All-Time Best Times</h3>
+  <h3>All-Time Best Races</h3>
   <ol>
     <% @best_times.each do |game| %>
+      <% if game.time > 0 %>
       <li><%=Player.find(game.winner_id).name%>: <%=game.time%> seconds</li>
+      <% end %>
     <% end %>
   </ol>
 </div>
 <div id="player-setup">
-  <%= erb :_form, layout: false %>
+  <div id='add-players'>
+    <form class='add-player'>
+      <input type='submit' value='+'>
+    </form>
+    <form class='remove-player'>
+      <input type='submit' value='-'>
+    </form>
+  </div>
+  <div class='player-form'>
+    <h4>Player 1</h4>
+    <form class='new-player'>
+      <input type='text' name='player'>
+      <input class='btn' type='submit' value='Ready'>
+      <div class='errors'></div>
+    </form>
+  </div>
 </div>
 <div id='start'>
-  <form class='start-btn' action='/new_game' method='post'>
+  <form class='start-btn'>
     <input class='btn' type='submit' value='Start!'>
   </form>
   <div id='light'>
@@ -22,5 +37,48 @@
     <div id='green'></div>
   </div>
 </div>
-<%= erb :_game, layout: false %>
+<div class='game'>
+  <table id="race_table">
+    <tr class="track">
+      <td class="active"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td class='number'></td>
+      <td class='finish'></td>
+    </tr>
+  </table>
+</div>
 

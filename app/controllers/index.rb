@@ -1,13 +1,12 @@
 get '/' do
-  @best_times = Game.all.to_a.sort_by(&:time)[0..9]
-  p @best_times
+  @best_times = Game.order('updated_at - created_at').limit(10)
   erb :index
 end
 
 post '/new_game' do
-  @player1 = Player.find_by_name(params[:player1])
-  @player2 = Player.find_by_name(params[:player2])
-  @game = Game.create(players: [@player1, @player2])
+  Game.create(params[:players])
+  content_type :json
+  @game.to_json
 end
 
 post '/new_player' do
@@ -16,10 +15,12 @@ post '/new_player' do
   @player.to_json
 end
 
+post '/add_player' do
+  erb :_form, layout: false
+end
+
 post '/finished' do
   @game = Game.last
-  @winner = Player.find_by_name(params[:winner])
-  @game.winner_id = @winner.id
-  @game.save
+  @game.update_attributes(params[:game])
   erb :_winner, layout: false, locals: { game: @game, winner: @winner}
 end
